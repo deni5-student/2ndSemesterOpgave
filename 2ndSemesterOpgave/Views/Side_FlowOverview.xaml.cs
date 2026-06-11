@@ -51,6 +51,60 @@ namespace _2ndSemesterOpgave.Views
             }
         }
 
+        private void Favorit_Click(object sender, RoutedEventArgs e)
+        {
+            if (FlowList.SelectedItem is Flow selectedFlow)
+            {
+                if (!selectedFlow.Title.StartsWith("* "))
+                {
+                    selectedFlow.Title = "* " + selectedFlow.Title;
+                    var flows = FlowList.ItemsSource as List<Flow>;
+                    FlowList.ItemsSource = null;
+                    FlowList.ItemsSource = flows;
+                }
+                else
+                {
+                    selectedFlow.Title = selectedFlow.Title.Substring(2);
+                    var flows = FlowList.ItemsSource as List<Flow>;
+                    FlowList.ItemsSource = null;
+                    FlowList.ItemsSource = flows;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vælg et flow fra listen først.");
+            }
+        }
+
+        private List<Flow> InsertionSort(List<Flow> flows, bool ascending)
+        {
+            for (int i = 1; i < flows.Count; i++)
+            {
+                Flow current = flows[i];
+                int j = i - 1;
+
+                while (j >= 0 && string.Compare(flows[j].Title, current.Title) > 0 == ascending)
+                {
+                    flows[j + 1] = flows[j];
+                    j--;
+                }
+                flows[j + 1] = current;
+            }
+            return flows;
+        }
+
+        private async void AtilZ_Click(object sender, RoutedEventArgs e)
+        {
+            var flows = await CRUD_Flow.GetAll();
+            FlowList.ItemsSource = InsertionSort(flows, true);
+        }
+
+        private async void ZtilA_Click(object sender, RoutedEventArgs e)
+        {
+            var flows = await CRUD_Flow.GetAll();
+            FlowList.ItemsSource = InsertionSort(flows, false);
+        }
+
         private void Logud_Click(object sender, RoutedEventArgs e)
         {
             var mainWindow = (MainWindow)Window.GetWindow(this);
