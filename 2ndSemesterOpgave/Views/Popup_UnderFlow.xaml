@@ -11,7 +11,6 @@
         <TextBox x:Name="UnderFlowTitelBox" HorizontalAlignment="Center" Margin="0,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Beskrivelse" HorizontalAlignment="Center" Margin="0,102,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="UnderFlowDescriptionBox" HorizontalAlignment="Center" Margin="0,133,0,0" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Top" Width="120" Height="59"/>
-        <Button Content="Gem" HorizontalAlignment="Center" Margin="0,228,0,0" VerticalAlignment="Top" Width="120"/>
-
+        <Button Content="Gem" HorizontalAlignment="Center" Margin="0,228,0,0" VerticalAlignment="Top" Width="120" Click="GemUnderFlow_Click"/>
     </Grid>
 </Window>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using _2ndSemesterOpgave.Class;
+using _2ndSemesterOpgave.Services;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -17,9 +19,26 @@ namespace _2ndSemesterOpgave.Views
     /// </summary>
     public partial class Popup_UnderFlow : Window
     {
-        public Popup_UnderFlow()
+        private int _flowId;
+        public Popup_UnderFlow(int flowId)
         {
             InitializeComponent();
+            _flowId = flowId;
+        }
+
+        private void GemUnderFlow_Click(object sender, RoutedEventArgs e)
+        {
+            string title = UnderFlowTitelBox.Text;
+            string content = UnderFlowDescriptionBox.Text;
+
+            if (string.IsNullOrWhiteSpace(title) || string.IsNullOrWhiteSpace(content))
+            {
+                MessageBox.Show("Udfyld alle felter.");
+                return;
+            }
+
+            CRUD_UnderFlow.Add(title, content, _flowId);
+            Close();
         }
     }
 }
