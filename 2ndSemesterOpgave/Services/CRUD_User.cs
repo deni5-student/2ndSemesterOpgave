@@ -15,7 +15,7 @@ namespace _2ndSemesterOpgave.Services
             await connection.OpenAsync();
 
             var command = connection.CreateCommand();
-            command.CommandText = "SELECT Id, Name, Username, Role FROM User";
+            command.CommandText = "SELECT Id, Name, Username, Password, Role FROM User";
 
             using var reader = await command.ExecuteReaderAsync();
             while (await reader.ReadAsync())
@@ -25,7 +25,8 @@ namespace _2ndSemesterOpgave.Services
                     Id = reader.GetInt32(0),
                     Name = reader.GetString(1),
                     Username = reader.GetString(2),
-                    Role = reader.GetString(3)
+                    Password = reader.GetString(3),
+                    Role = reader.GetString(4)
                 });
             }
 
