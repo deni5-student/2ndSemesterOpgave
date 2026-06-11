@@ -1,0 +1,17 @@
+﻿<Window x:Class="_2ndSemesterOpgave.Views.Popup_Flow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_2ndSemesterOpgave.Views"
+        mc:Ignorable="d"
+        Title="Popup_Flow" Height="300" Width="300">
+    <Grid>
+        <Label Content="Flow Titel" HorizontalAlignment="Center" Margin="0,37,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="FlowTitelBox" HorizontalAlignment="Center" Margin="0,68,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Beskrivelse" HorizontalAlignment="Center" Margin="0,91,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="FlowDescriptionBox" HorizontalAlignment="Center" Margin="0,122,0,0" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Top" Width="120" Height="45"/>
+        <Button Content="Gem Bruger" HorizontalAlignment="Center" Margin="0,183,0,0" VerticalAlignment="Top" Width="120"/>
+
+    </Grid>
+</Window>
