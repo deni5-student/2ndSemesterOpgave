@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _2ndSemesterOpgave.Services;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -20,6 +21,21 @@ namespace _2ndSemesterOpgave.Views
         public Popup_Flow()
         {
             InitializeComponent();
+        }
+
+        private void Gem_Click(object sender, RoutedEventArgs e)
+        {
+            string title = FlowTitelBox.Text;
+            string content = FlowDescriptionBox.Text;
+
+            if (string.IsNullOrWhiteSpace(title) || string.IsNullOrWhiteSpace(content))
+            {
+                MessageBox.Show("Udfyld alle felter.");
+                return;
+            }
+
+            CRUD_Flow.Add(title, content, 1);
+            Close();
         }
     }
 }

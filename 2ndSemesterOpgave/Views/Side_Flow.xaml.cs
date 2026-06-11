@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using _2ndSemesterOpgave.Class;
 
 namespace _2ndSemesterOpgave.Views
 {
@@ -18,7 +19,7 @@ namespace _2ndSemesterOpgave.Views
     /// </summary>
     public partial class Side_Flow : UserControl
     {
-        public Side_Flow()
+        public Side_Flow(Flow flow)
         {
             InitializeComponent();
         }

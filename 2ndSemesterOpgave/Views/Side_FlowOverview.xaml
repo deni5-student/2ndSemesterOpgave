@@ -7,16 +7,17 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Label Content="Flow Overview" HorizontalAlignment="Left" Margin="72,20,0,0" VerticalAlignment="Top"/>
-        <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Margin="72,74,128,77">
+        <Label Content="Flow Overview" HorizontalAlignment="Left" Margin="329,30,0,0" VerticalAlignment="Top"/>
+        <ListView x:Name="FlowList" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="72,74,128,99">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn/>
+                    <GridViewColumn Header="Titel" DisplayMemberBinding="{Binding Title}" Width="500"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="+ Opret Flow" HorizontalAlignment="Left" Margin="572,33,0,0" VerticalAlignment="Top" Width="100"/>
-        <Button Content="Logud" HorizontalAlignment="Left" Margin="572,398,0,0" VerticalAlignment="Top" Width="100"/>
+        <Button Content="+ Opret Flow" HorizontalAlignment="Left" Margin="572,33,0,0" VerticalAlignment="Top" Width="100" Click="OpretFlow_Click"/>
+        <Button Content="Logud" HorizontalAlignment="Left" Margin="572,378,0,0" VerticalAlignment="Top" Width="100" Click="Logud_Click"/>
+        <Button Content="Åben Flow" HorizontalAlignment="Left" Margin="72,36,0,0" VerticalAlignment="Top" Width="100" Click="OpenFlow_Click"/>
 
     </Grid>
 </UserControl>

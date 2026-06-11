@@ -30,12 +30,12 @@ namespace _2ndSemesterOpgave.Services
                     Role TEXT NOT NULL
                 );
 
-                CREATE TABLE IF NOT EXISTS Courses (
+                CREATE TABLE IF NOT EXISTS Flow (
                     Id INTEGER PRIMARY KEY AUTOINCREMENT,
                     Title TEXT NOT NULL,
                     Content TEXT NOT NULL,
                     UserId INTEGER NOT NULL,
-                    FOREIGN KEY(UserId) REFERENCES Uses(Id)
+                    FOREIGN KEY(UserId) REFERENCES User(Id)
                 );
 
                 CREATE TABLE IF NOT EXISTS UnderFlow (
@@ -43,7 +43,7 @@ namespace _2ndSemesterOpgave.Services
                     Title TEXT NOT NULL,
                     Content TEXT NOT NULL,
                     FlowId INTEGER NOT NULL,
-                    FOREIGN KEY(FlowId) REFERENCES Courses(Id)
+                    FOREIGN KEY(FlowId) REFERENCES Flow(Id)
                     );
 
                 INSERT OR IGNORE INTO User (Name, Username, Password, Role) VALUES ('Administrator','admin', '1234', 'Administrator');
