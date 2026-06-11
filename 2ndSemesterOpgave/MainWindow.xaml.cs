@@ -19,6 +19,7 @@ namespace _2ndSemesterOpgave
         public MainWindow()
         {
             InitializeComponent();
+            MainContent.Content = new Views.Side_Login();
         }
     }
 }
