@@ -7,19 +7,19 @@ namespace _2ndSemesterOpgave.Services
 {
     public class CRUD_UnderFlow
     {
-        public static List<UnderFlow> GetByFlow(int flowId)
+        public static async Task<List<UnderFlow>> GetByFlow(int flowId)
         {
             var underflows = new List<UnderFlow>();
 
             using var connection = Database.GetConnection();
-            connection.Open();
+            await connection.OpenAsync();
 
             var command = connection.CreateCommand();
             command.CommandText = "SELECT Id, Title, Content, FlowId FROM UnderFlow WHERE FlowId = @flowId";
             command.Parameters.AddWithValue("@flowId", flowId);
 
-            using var reader = command.ExecuteReader();
-            while (reader.Read())
+            using var reader = await command.ExecuteReaderAsync();
+            while (await reader.ReadAsync())
             {
                 underflows.Add(new UnderFlow
                 {
@@ -33,17 +33,17 @@ namespace _2ndSemesterOpgave.Services
             return underflows;
         }
 
-        public static void Add(string title, string content, int flowId)
+        public static async Task Add(string title, string content, int flowId)
         {
             using var connection = Database.GetConnection();
-            connection.Open();
+            await connection.OpenAsync();
 
             var command = connection.CreateCommand();
             command.CommandText = "INSERT INTO UnderFlow (Title, Content, FlowId) VALUES (@title, @content, @flowId)";
             command.Parameters.AddWithValue("@title", title);
             command.Parameters.AddWithValue("@content", content);
             command.Parameters.AddWithValue("@flowId", flowId);
-            command.ExecuteNonQuery();
+            await command.ExecuteNonQueryAsync();
         }
     }
 }

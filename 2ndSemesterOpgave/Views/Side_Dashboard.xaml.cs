@@ -24,46 +24,46 @@ namespace _2ndSemesterOpgave.Views
         public Side_Dashboard()
         {
             InitializeComponent();
-            LoadUsers();
+            Loaded += async (s, e) => await LoadUsers();
         }
 
-        private void LoadUsers()
+        private async Task LoadUsers()
         {
-            UserListbox.ItemsSource = CRUD_User.GetAll();
+            UserListbox.ItemsSource = await CRUD_User.GetAll();
             UserListbox.DisplayMemberPath = "Name";
         }
 
-        private void CreateUser_Click(object sender, RoutedEventArgs e)
+        private async void CreateUser_Click(object sender, RoutedEventArgs e)
         {
             var popup = new Popup_User();
             popup.ShowDialog();
-            LoadUsers();
+            await LoadUsers();
         }
 
-        private void EditUser_Click(object sender, RoutedEventArgs e)
-        {
-            if (UserListbox.SelectedItem is User seletecdUser)
-            {
-                var popup = new Popup_User(seletecdUser);
-                popup.ShowDialog();
-                LoadUsers();
-            }
-            else
-            {
-                MessageBox.Show("Vælg en bruger fra listen");
-            }
-        }
-
-        private void DeleteUser_Click(object sender, RoutedEventArgs e)
+        private async void EditUser_Click(object sender, RoutedEventArgs e)
         {
             if (UserListbox.SelectedItem is User selectedUser)
-                {
-                CRUD_User.Delete(selectedUser.Id);
-                LoadUsers();
-                }
+            {
+                var popup = new Popup_User(selectedUser);
+                popup.ShowDialog();
+                await LoadUsers();
+            }
             else
             {
-                MessageBox.Show("Vælg en bruger fra listen");
+                MessageBox.Show("Vælg en bruger fra listen først.");
+            }
+        }
+
+        private async void DeleteUser_Click(object sender, RoutedEventArgs e)
+        {
+            if (UserListbox.SelectedItem is User selectedUser)
+            {
+                await CRUD_User.Delete(selectedUser.Id);
+                await LoadUsers();
+            }
+            else
+            {
+                MessageBox.Show("Vælg en bruger fra listen først.");
             }
         }
 

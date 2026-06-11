@@ -5,20 +5,20 @@ using _2ndSemesterOpgave.Class;
 
 namespace _2ndSemesterOpgave.Services
 {
-    internal class CRUD_User
+    public class CRUD_User
     {
-        public static List<User> GetAll()
+        public static async Task<List<User>> GetAll()
         {
             var users = new List<User>();
 
             using var connection = Database.GetConnection();
-            connection.Open();
+            await connection.OpenAsync();
 
             var command = connection.CreateCommand();
             command.CommandText = "SELECT Id, Name, Username, Role FROM User";
 
-            using var reader = command.ExecuteReader();
-            while (reader.Read())
+            using var reader = await command.ExecuteReaderAsync();
+            while (await reader.ReadAsync())
             {
                 users.Add(new User
                 {
@@ -32,10 +32,10 @@ namespace _2ndSemesterOpgave.Services
             return users;
         }
 
-        public static void Add(string name, string username, string password, string role)
+        public static async Task Add(string name, string username, string password, string role)
         {
             using var connection = Database.GetConnection();
-            connection.Open();
+            await connection.OpenAsync();
 
             var command = connection.CreateCommand();
             command.CommandText = "INSERT INTO User (Name, Username, Password, Role) VALUES (@name, @username, @password, @role)";
@@ -43,13 +43,13 @@ namespace _2ndSemesterOpgave.Services
             command.Parameters.AddWithValue("@username", username);
             command.Parameters.AddWithValue("@password", password);
             command.Parameters.AddWithValue("@role", role);
-            command.ExecuteNonQuery();
+            await command.ExecuteNonQueryAsync();
         }
 
-        public static void Update(int id, string name, string username, string password, string role)
+        public static async Task Update(int id, string name, string username, string password, string role)
         {
             using var connection = Database.GetConnection();
-            connection.Open();
+            await connection.OpenAsync();
 
             var command = connection.CreateCommand();
             command.CommandText = "UPDATE User SET Name = @name, Username = @username, Password = @password, Role = @role WHERE Id = @id";
@@ -58,18 +58,18 @@ namespace _2ndSemesterOpgave.Services
             command.Parameters.AddWithValue("@password", password);
             command.Parameters.AddWithValue("@role", role);
             command.Parameters.AddWithValue("@id", id);
-            command.ExecuteNonQuery();
+            await command.ExecuteNonQueryAsync();
         }
 
-        public static void Delete(int id)
+        public static async Task Delete(int id)
         {
             using var connection = Database.GetConnection();
-            connection.Open();
+            await connection.OpenAsync();
 
             var command = connection.CreateCommand();
             command.CommandText = "DELETE FROM User WHERE Id = @id";
             command.Parameters.AddWithValue("@id", id);
-            command.ExecuteNonQuery();
+            await command.ExecuteNonQueryAsync();
         }
     }
 }

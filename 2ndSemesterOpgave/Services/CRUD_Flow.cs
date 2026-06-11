@@ -9,18 +9,18 @@ namespace _2ndSemesterOpgave.Services
 {
     public class CRUD_Flow
     {
-        public static List<Flow> GetAll()
+        public static async Task<List<Flow>> GetAll()
         {
             var flows = new List<Flow>();
 
             using var connection = Database.GetConnection();
-            connection.Open();
+            await connection.OpenAsync();
 
             var command = connection.CreateCommand();
             command.CommandText = "SELECT Id, Title, Content, UserId FROM Flow";
 
-            using var reader = command.ExecuteReader();
-            while (reader.Read())
+            using var reader = await command.ExecuteReaderAsync();
+            while (await reader.ReadAsync())
             {
                 flows.Add(new Flow
                 {
@@ -30,20 +30,21 @@ namespace _2ndSemesterOpgave.Services
                     UserId = reader.GetInt32(3)
                 });
             }
+
             return flows;
         }
 
-        public static void Add(string title, string content, int userId)
+        public static async Task Add(string title, string content, int userId)
         {
             using var connection = Database.GetConnection();
-            connection.Open();
+            await connection.OpenAsync();
 
             var command = connection.CreateCommand();
             command.CommandText = "INSERT INTO Flow (Title, Content, UserId) VALUES (@title, @content, @userId)";
             command.Parameters.AddWithValue("@title", title);
             command.Parameters.AddWithValue("@content", content);
             command.Parameters.AddWithValue("@userId", userId);
-            command.ExecuteNonQuery();
+            await command.ExecuteNonQueryAsync();
         }
     }
 }

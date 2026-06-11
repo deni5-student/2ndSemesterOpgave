@@ -23,19 +23,19 @@ namespace _2ndSemesterOpgave.Views
         public Side_FlowOverview()
         {
             InitializeComponent();
-            LoadFlows();
+            Loaded += async (s, e) => await LoadFlows();
         }
 
-        private void LoadFlows()
+        private async Task LoadFlows()
         {
-            FlowList.ItemsSource = CRUD_Flow.GetAll();
+            FlowList.ItemsSource = await CRUD_Flow.GetAll();
         }
 
-        private void OpretFlow_Click(object sender, RoutedEventArgs e)
+        private async void OpretFlow_Click(object sender, RoutedEventArgs e)
         {
             var popup = new Popup_Flow();
             popup.ShowDialog();
-            LoadFlows();
+            await LoadFlows();
         }
 
         private void OpenFlow_Click(object sender, RoutedEventArgs e)

@@ -21,6 +21,7 @@ namespace _2ndSemesterOpgave.Views
     public partial class Side_Flow : UserControl
     {
         private Flow _currentFlow;
+
         public Side_Flow(Flow flow)
         {
             InitializeComponent();
@@ -29,27 +30,14 @@ namespace _2ndSemesterOpgave.Views
             FlowTitel_TextBlock.Text = flow.Title;
             FlowText_TextBlock.Text = flow.Content;
 
-            LoadUnderFlows();
+            Loaded += async (s, e) => await LoadUnderFlows();
         }
 
-        private void LoadUnderFlows()
+        private async Task LoadUnderFlows()
         {
-            var underflows = CRUD_UnderFlow.GetByFlow(_currentFlow.Id);
+            var underflows = await CRUD_UnderFlow.GetByFlow(_currentFlow.Id);
             FlowTree.ItemsSource = underflows;
             FlowTree.DisplayMemberPath = "Title";
-        }
-
-        private void TilbageFlowOverview_Click (object sender, RoutedEventArgs e)
-        {
-            var mainWindow = (MainWindow)Window.GetWindow(this);
-            mainWindow.MainContent.Content = new Side_FlowOverview();
-        }
-
-        private void OpretUnderFlow_Click(object sender, RoutedEventArgs e)
-        {
-            var popup = new Popup_UnderFlow(_currentFlow.Id);
-            popup.ShowDialog();
-            LoadUnderFlows();
         }
 
         private void LoadUnderFlow_Click(object sender, RoutedEventArgs e)
@@ -61,8 +49,21 @@ namespace _2ndSemesterOpgave.Views
             }
             else
             {
-                MessageBox.Show("Vælg en UnderFlow først");
+                MessageBox.Show("Vælg en UnderFlow fra listen først.");
             }
+        }
+
+        private async void OpretUnderFlow_Click(object sender, RoutedEventArgs e)
+        {
+            var popup = new Popup_UnderFlow(_currentFlow.Id);
+            popup.ShowDialog();
+            await LoadUnderFlows();
+        }
+
+        private void TilbageFlowOverview_Click(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = (MainWindow)Window.GetWindow(this);
+            mainWindow.MainContent.Content = new Side_FlowOverview();
         }
 
         private void Logud_Click(object sender, RoutedEventArgs e)
