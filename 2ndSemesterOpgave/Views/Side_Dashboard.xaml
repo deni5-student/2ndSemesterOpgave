@@ -8,7 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Label Content="Dashboard" HorizontalAlignment="Center" Margin="0,40,0,0" VerticalAlignment="Top"/>
-        <ListBox x:Name="UserListbox" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="315,101,315,67"/>
+        <ListBox x:Name="UserListbox" DisplayMemberPath="Name" Margin="315,101,315,67"/>
         <Button Content="Opret Bruger" HorizontalAlignment="Left" Margin="197,103,0,0" VerticalAlignment="Top" Width="100" Click="CreateUser_Click"/>
         <Button Content="Rediger Bruger" HorizontalAlignment="Left" Margin="197,149,0,0" VerticalAlignment="Top" Width="100" Click="EditUser_Click"/>
         <Button Content="Slet Bruger" HorizontalAlignment="Left" Margin="197,363,0,0" VerticalAlignment="Top" Width="100" Click="DeleteUser_Click"/>
