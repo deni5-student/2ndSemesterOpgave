@@ -1,4 +1,6 @@
-﻿using System;
+﻿using _2ndSemesterOpgave.Class;
+using _2ndSemesterOpgave.Services;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -17,9 +19,49 @@ namespace _2ndSemesterOpgave.Views
     /// </summary>
     public partial class Popup_User : Window
     {
+        private User? _editUser = null;
         public Popup_User()
         {
             InitializeComponent();
+        }
+
+        public Popup_User(User user)
+        {
+            InitializeComponent();
+            _editUser = user;
+
+            NameBox.Text = user.Name;
+            UsernameBox.Text = user.Username;
+            PasswordBox.Text = user.Password;
+
+            if (user.Role == "Administrator") RadioAdmin.IsChecked = true;
+            else if (user.Role == "Lærer") RadioLaerer.IsChecked = true;
+            else if (user.Role == "Elev") RadioElev.IsChecked = true;
+        }
+
+        private void Gem_Click(object sender, RoutedEventArgs e)
+        {
+            string name = NameBox.Text;
+            string username = UsernameBox.Text;
+            string password = PasswordBox.Text;
+            string role = RadioAdmin.IsChecked == true ? "Administrator" : RadioLaerer.IsChecked == true ? "Lærer" : "Elev";
+
+            if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+            {
+                MessageBox.Show("Udfydl alle felter først");
+                return;
+            }
+
+            if (_editUser == null)
+            {
+                 CRUD_User.Add(name, username, password, role);
+            }
+            else
+            {
+                CRUD_User.Update(_editUser.Id, name, username, password, role);
+            }
+
+            Close();
         }
     }
 }

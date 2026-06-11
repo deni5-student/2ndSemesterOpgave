@@ -12,12 +12,11 @@
         <Label Content="Brugernavn" HorizontalAlignment="Center" Margin="0,94,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="UsernameBox" HorizontalAlignment="Center" Margin="0,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Adgangskode" HorizontalAlignment="Center" Margin="0,148,0,0" VerticalAlignment="Top"/>
-        <PasswordBox HorizontalAlignment="Center" Margin="0,179,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="PasswordBox" HorizontalAlignment="Center" Margin="0,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Rolle" HorizontalAlignment="Center" Margin="0,202,0,0" VerticalAlignment="Top"/>
-        <RadioButton Content="Administrativ" HorizontalAlignment="Center" Margin="0,233,0,0" VerticalAlignment="Top"/>
-        <RadioButton Content="Lærer" HorizontalAlignment="Left" Margin="106,253,0,0" VerticalAlignment="Top"/>
-        <RadioButton Content="Elev" HorizontalAlignment="Left" Margin="106,273,0,0" VerticalAlignment="Top"/>
-        <Button Content="Gem Bruger" HorizontalAlignment="Center" Margin="0,326,0,0" VerticalAlignment="Top" Width="120"/>
-
+        <RadioButton x:Name="RadioAdmin" Content="Administrativ" HorizontalAlignment="Center" Margin="0,233,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="RadioLaerer" Content="Lærer" HorizontalAlignment="Left" Margin="106,253,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="RadioElev" Content="Elev" HorizontalAlignment="Left" Margin="106,273,0,0" VerticalAlignment="Top"/>
+        <Button Content="Gem Bruger" HorizontalAlignment="Center" Margin="0,326,0,0" VerticalAlignment="Top" Width="120" Click="Gem_Click"/>
     </Grid>
 </Window>
