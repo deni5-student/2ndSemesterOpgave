@@ -7,6 +7,34 @@ namespace _2ndSemesterOpgave.Services
 {
     public class CRUD_UnderFlow
     {
+        // ╔══════════════════════════════════════════════════════╗
+        // ║  FORFATTER   : Dennis                                ║
+        // ║  KLASSE      : CRUD_UnderFlow                        ║
+        // ║  METODE      : Add()                                 ║
+        // ║  BESKRIVELSE : Opretter et underflow i databasen     ║
+        // ║                med en flowId                         ║
+        // ╚══════════════════════════════════════════════════════╝
+
+        public static async Task Add(string title, string content, int flowId)
+        {
+            using var connection = Database.GetConnection();
+            await connection.OpenAsync();
+
+            var command = connection.CreateCommand();
+            command.CommandText = "INSERT INTO UnderFlow (Title, Content, FlowId) VALUES (@title, @content, @flowId)";
+            command.Parameters.AddWithValue("@title", title);
+            command.Parameters.AddWithValue("@content", content);
+            command.Parameters.AddWithValue("@flowId", flowId);
+            await command.ExecuteNonQueryAsync();
+        }
+
+        // ╔══════════════════════════════════════════════════════╗
+        // ║  FORFATTER   : Dennis                                ║
+        // ║  KLASSE      : CRUD_UnderFlow                        ║
+        // ║  METODE      : GetByFlow()                           ║
+        // ║  BESKRIVELSE : Henter alle underflows der tilhører   ║
+        // ║                en bestemt flow med flowId            ║
+        // ╚══════════════════════════════════════════════════════╝
         public static async Task<List<UnderFlow>> GetByFlow(int flowId)
         {
             var underflows = new List<UnderFlow>();
@@ -31,19 +59,6 @@ namespace _2ndSemesterOpgave.Services
             }
 
             return underflows;
-        }
-
-        public static async Task Add(string title, string content, int flowId)
-        {
-            using var connection = Database.GetConnection();
-            await connection.OpenAsync();
-
-            var command = connection.CreateCommand();
-            command.CommandText = "INSERT INTO UnderFlow (Title, Content, FlowId) VALUES (@title, @content, @flowId)";
-            command.Parameters.AddWithValue("@title", title);
-            command.Parameters.AddWithValue("@content", content);
-            command.Parameters.AddWithValue("@flowId", flowId);
-            await command.ExecuteNonQueryAsync();
         }
     }
 }

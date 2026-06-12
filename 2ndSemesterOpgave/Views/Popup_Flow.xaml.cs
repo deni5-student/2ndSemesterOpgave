@@ -23,6 +23,13 @@ namespace _2ndSemesterOpgave.Views
             InitializeComponent();
         }
 
+        // ╔══════════════════════════════════════════════════════╗
+        // ║  FORFATTER   : Dennis                                ║
+        // ║  KLASSE      : Popup_Flow                            ║
+        // ║  METODE      : Gem_Click()                           ║
+        // ║  BESKRIVELSE : tager tekst fra titel og content      ║
+        // ║                og laver Flow med CRUD_Flow           ║
+        // ╚══════════════════════════════════════════════════════╝
         private void Gem_Click(object sender, RoutedEventArgs e)
         {
             string title = FlowTitelBox.Text;

@@ -18,11 +18,24 @@ namespace _2ndSemesterOpgave.Views
     /// </summary>
     public partial class Side_Login : UserControl
     {
+        // ╔══════════════════════════════════════════════════════╗
+        // ║  FORFATTER   : Dennis                                ║
+        // ║  KLASSE      : Side_Login                            ║
+        // ║  METODE      : Side_Login()                          ║
+        // ║  BESKRIVELSE : starter loginside                     ║
+        // ║                                                      ║
+        // ╚══════════════════════════════════════════════════════╝
         public Side_Login()
         {
             InitializeComponent();
         }
-
+        // ╔══════════════════════════════════════════════════════╗
+        // ║  FORFATTER   : Dennis                                ║
+        // ║  KLASSE      : Side_Login                            ║
+        // ║  METODE      : Login_Click()                         ║
+        // ║  BESKRIVELSE : logger bruger ind baseret på rolle    ║
+        // ║                                                      ║
+        // ╚══════════════════════════════════════════════════════╝
         private void Login_Click(object sender, RoutedEventArgs e)
         {
             string username = UsernameBox.Text;
@@ -52,8 +65,7 @@ namespace _2ndSemesterOpgave.Views
             }
             else
             {
-                forside.MainContent.Content = new Side_FlowOverview();
-                
+                forside.MainContent.Content = new Side_FlowOverview(role);
             }
         }
     }

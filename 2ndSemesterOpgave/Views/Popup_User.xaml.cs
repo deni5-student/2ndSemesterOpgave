@@ -20,11 +20,25 @@ namespace _2ndSemesterOpgave.Views
     public partial class Popup_User : Window
     {
         private User? _editUser = null;
+
+        // ╔══════════════════════════════════════════════════════╗
+        // ║  FORFATTER   : Dennis                                ║
+        // ║  KLASSE      : Popup_User                            ║
+        // ║  METODE      : Popup_User()                          ║
+        // ║  BESKRIVELSE : starter popup til brugeroprettelse    ║
+        // ║                                                      ║
+        // ╚══════════════════════════════════════════════════════╝
         public Popup_User()
         {
             InitializeComponent();
         }
-
+        // ╔══════════════════════════════════════════════════════╗
+        // ║  FORFATTER   : Dennis                                ║
+        // ║  KLASSE      : Popup_User                            ║
+        // ║  METODE      : Popup_User()                          ║
+        // ║  BESKRIVELSE : starter popup når man skal redigere   ║
+        // ║                bruger                                ║
+        // ╚══════════════════════════════════════════════════════╝
         public Popup_User(User user)
         {
             InitializeComponent();
@@ -38,7 +52,13 @@ namespace _2ndSemesterOpgave.Views
             else if (user.Role == "Lærer") RadioLaerer.IsChecked = true;
             else if (user.Role == "Elev") RadioElev.IsChecked = true;
         }
-
+        // ╔══════════════════════════════════════════════════════╗
+        // ║  FORFATTER   : Dennis                                ║
+        // ║  KLASSE      : Popup_User                            ║
+        // ║  METODE      : Gem_Click()                           ║
+        // ║  BESKRIVELSE : opretter eller gemmer bruger          ║
+        // ║                kommer an på _editUser                ║
+        // ╚══════════════════════════════════════════════════════╝
         private void Gem_Click(object sender, RoutedEventArgs e)
         {
             string name = NameBox.Text;
@@ -48,7 +68,7 @@ namespace _2ndSemesterOpgave.Views
 
             if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
-                MessageBox.Show("Udfydl alle felter først");
+                MessageBox.Show("Udfydl alle felter");
                 return;
             }
 

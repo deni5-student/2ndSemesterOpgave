@@ -9,11 +9,27 @@ namespace _2ndSemesterOpgave.Services
     {
         private static string _dbPath = "skole.db";
 
+        // ╔══════════════════════════════════════════════════════╗
+        // ║  FORFATTER   : Dennis                                ║
+        // ║  KLASSE      : Database                              ║
+        // ║  METODE      : GetConnection()                       ║
+        // ║  BESKRIVELSE : opretter en forbindelse til           ║
+        // ║                SQLite databasen - bruges af alle     ║
+        // ║                CRUD klasser                          ║
+        // ╚══════════════════════════════════════════════════════╝
         public static SqliteConnection GetConnection()
         {
             return new SqliteConnection($"Data Source={_dbPath}");
         }
 
+        // ╔══════════════════════════════════════════════════════╗
+        // ║  FORFATTER   : Dennis                                ║
+        // ║  KLASSE      : Database                              ║
+        // ║  METODE      : Initialize()                          ║
+        // ║  BESKRIVELSE : Den kører ved program start og        ║
+        // ║                opretter tabeller samt en lokal       ║
+        // ║                admin bruger for at kunne logge på    ║
+        // ╚══════════════════════════════════════════════════════╝
         public static void Initialize()
         {
             using var connection = GetConnection();

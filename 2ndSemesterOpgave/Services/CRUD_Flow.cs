@@ -9,6 +9,14 @@ namespace _2ndSemesterOpgave.Services
 {
     public class CRUD_Flow
     {
+        // ╔══════════════════════════════════════════════════════╗
+        // ║  FORFATTER   : Dennis                                ║
+        // ║  KLASSE      : CRUD_Flow                             ║
+        // ║  METODE      : GetAll()                              ║
+        // ║  BESKRIVELSE : Henter alle flows fra databasen og    ║
+        // ║                returnerer dem som en liste af        ║
+        // ║                Flow objekter                         ║
+        // ╚══════════════════════════════════════════════════════╝
         public static async Task<List<Flow>> GetAll()
         {
             var flows = new List<Flow>();
@@ -34,6 +42,13 @@ namespace _2ndSemesterOpgave.Services
             return flows;
         }
 
+        // ╔══════════════════════════════════════════════════════╗
+        // ║  FORFATTER   : Dennis                                ║
+        // ║  KLASSE      : CRUD_Flow                             ║
+        // ║  METODE      : Add()                                 ║
+        // ║  BESKRIVELSE : Opretter et nyt flow i databasen      ║
+        // ║                med titel, indhold og ejer (userId)   ║
+        // ╚══════════════════════════════════════════════════════╝
         public static async Task Add(string title, string content, int userId)
         {
             using var connection = Database.GetConnection();

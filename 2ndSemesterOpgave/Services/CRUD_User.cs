@@ -7,6 +7,13 @@ namespace _2ndSemesterOpgave.Services
 {
     public class CRUD_User
     {
+        // ╔══════════════════════════════════════════════════════╗
+        // ║  FORFATTER   : Dennis                                ║
+        // ║  KLASSE      : CRUD_User                             ║
+        // ║  METODE      : GetAll()                              ║
+        // ║  BESKRIVELSE : Henter alle brugere fra databasen     ║
+        // ║                og returnerer dem som en liste        ║
+        // ╚══════════════════════════════════════════════════════╝
         public static async Task<List<User>> GetAll()
         {
             var users = new List<User>();
@@ -33,6 +40,14 @@ namespace _2ndSemesterOpgave.Services
             return users;
         }
 
+        // ╔══════════════════════════════════════════════════════╗
+        // ║  FORFATTER   : Dennis                                ║
+        // ║  KLASSE      : CRUD_User                             ║
+        // ║  METODE      : Add()                                 ║
+        // ║  BESKRIVELSE : Opretter en ny bruger i databasen     ║
+        // ║                med navn, brugernavn, adgangskode     ║
+        // ║                og rolle                              ║
+        // ╚══════════════════════════════════════════════════════╝
         public static async Task Add(string name, string username, string password, string role)
         {
             using var connection = Database.GetConnection();
@@ -47,6 +62,13 @@ namespace _2ndSemesterOpgave.Services
             await command.ExecuteNonQueryAsync();
         }
 
+        // ╔══════════════════════════════════════════════════════╗
+        // ║  FORFATTER   : Dennis                                ║
+        // ║  KLASSE      : CRUD_User                             ║
+        // ║  METODE      : Update()                              ║
+        // ║  BESKRIVELSE : Opdater bruger i databasen            ║
+        // ║                baseret på Id                         ║
+        // ╚══════════════════════════════════════════════════════╝
         public static async Task Update(int id, string name, string username, string password, string role)
         {
             using var connection = Database.GetConnection();
@@ -61,6 +83,14 @@ namespace _2ndSemesterOpgave.Services
             command.Parameters.AddWithValue("@id", id);
             await command.ExecuteNonQueryAsync();
         }
+
+        // ╔══════════════════════════════════════════════════════╗
+        // ║  FORFATTER   : Dennis                                ║
+        // ║  KLASSE      : CRUD_User                             ║
+        // ║  METODE      : Delete()                              ║
+        // ║  BESKRIVELSE : Sletter bruger i databaseasen         ║
+        // ║                baseret på Id                         ║
+        // ╚══════════════════════════════════════════════════════╝
 
         public static async Task Delete(int id)
         {

@@ -21,18 +21,39 @@ namespace _2ndSemesterOpgave.Views
     /// </summary>
     public partial class Side_Dashboard : UserControl
     {
+        // ╔══════════════════════════════════════════════════════╗
+        // ║  FORFATTER   : Dennis                                ║
+        // ║  KLASSE      : Side_Dashboard                        ║
+        // ║  METODE      : Side_Dashboard()                      ║
+        // ║  BESKRIVELSE : starter siden og henter bruger liste  ║
+        // ║                                                      ║
+        // ╚══════════════════════════════════════════════════════╝
         public Side_Dashboard()
         {
             InitializeComponent();
             Loaded += async (s, e) => await LoadUsers();
         }
 
+        // ╔══════════════════════════════════════════════════════╗
+        // ║  FORFATTER   : Dennis                                ║
+        // ║  KLASSE      : Side_Dashboard                        ║
+        // ║  METODE      : LoadUsers()                           ║
+        // ║  BESKRIVELSE : henter alle brugere ved at kalde      ║
+        // ║                CRUD_User.GetAll()                    ║
+        // ╚══════════════════════════════════════════════════════╝
         private async Task LoadUsers()
         {
             UserListbox.ItemsSource = await CRUD_User.GetAll();
             UserListbox.DisplayMemberPath = "Name";
         }
 
+        // ╔══════════════════════════════════════════════════════╗
+        // ║  FORFATTER   : Dennis                                ║
+        // ║  KLASSE      : Side_Dashboard                        ║
+        // ║  METODE      : CreateUser_Click()                    ║
+        // ║  BESKRIVELSE : starte popup til oprettelse af bruger ║
+        // ║                                                      ║
+        // ╚══════════════════════════════════════════════════════╝
         private async void CreateUser_Click(object sender, RoutedEventArgs e)
         {
             var popup = new Popup_User();
@@ -40,6 +61,13 @@ namespace _2ndSemesterOpgave.Views
             await LoadUsers();
         }
 
+        // ╔══════════════════════════════════════════════════════╗
+        // ║  FORFATTER   : Dennis                                ║
+        // ║  KLASSE      : Side_Dashboard                        ║
+        // ║  METODE      : EditUser_Click()                      ║
+        // ║  BESKRIVELSE : starte popup til redigering af bruger ║
+        // ║                                                      ║
+        // ╚══════════════════════════════════════════════════════╝
         private async void EditUser_Click(object sender, RoutedEventArgs e)
         {
             if (UserListbox.SelectedItem is User selectedUser)
@@ -50,10 +78,17 @@ namespace _2ndSemesterOpgave.Views
             }
             else
             {
-                MessageBox.Show("Vælg en bruger fra listen først.");
+                MessageBox.Show("Vælg en bruger først");
             }
         }
 
+        // ╔══════════════════════════════════════════════════════╗
+        // ║  FORFATTER   : Dennis                                ║
+        // ║  KLASSE      : Side_Dashboard                        ║
+        // ║  METODE      : DeleteUser_Click()                    ║
+        // ║  BESKRIVELSE : Sletter valgt bruger                  ║
+        // ║                                                      ║
+        // ╚══════════════════════════════════════════════════════╝
         private async void DeleteUser_Click(object sender, RoutedEventArgs e)
         {
             if (UserListbox.SelectedItem is User selectedUser)
@@ -63,10 +98,17 @@ namespace _2ndSemesterOpgave.Views
             }
             else
             {
-                MessageBox.Show("Vælg en bruger fra listen først.");
+                MessageBox.Show("Vælg en bruger først");
             }
         }
 
+        // ╔══════════════════════════════════════════════════════╗
+        // ║  FORFATTER   : Dennis                                ║
+        // ║  KLASSE      : Side_Dashboard                        ║
+        // ║  METODE      : Logud_Click()                         ║
+        // ║  BESKRIVELSE : Logger bruger ud til login siden      ║
+        // ║                                                      ║
+        // ╚══════════════════════════════════════════════════════╝
         private void Logud_Click(object sender, RoutedEventArgs e)
         {
             var mainWindow = (MainWindow)Window.GetWindow(this);

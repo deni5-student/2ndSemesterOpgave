@@ -25,7 +25,13 @@ namespace _2ndSemesterOpgave.Views
             InitializeComponent();
             _flowId = flowId;
         }
-
+        // ╔══════════════════════════════════════════════════════╗
+        // ║  FORFATTER   : Dennis                                ║
+        // ║  KLASSE      : Popup_UnderFlow                       ║
+        // ║  METODE      : GemUnderFlow_Click()                  ║
+        // ║  BESKRIVELSE : tager tekst fra titel og content      ║
+        // ║                og laver UnderFlow med CRUD_UnderFlow ║
+        // ╚══════════════════════════════════════════════════════╝
         private void GemUnderFlow_Click(object sender, RoutedEventArgs e)
         {
             string title = UnderFlowTitelBox.Text;

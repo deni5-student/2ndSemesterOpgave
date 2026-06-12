@@ -15,7 +15,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="+ Opret Flow" HorizontalAlignment="Left" Margin="572,33,0,0" VerticalAlignment="Top" Width="100" Click="OpretFlow_Click"/>
+        <Button x:Name="OpretFlow" Content="+ Opret Flow" HorizontalAlignment="Left" Margin="572,33,0,0" VerticalAlignment="Top" Width="100" Click="OpretFlow_Click"/>
         <Button Content="Logud" HorizontalAlignment="Left" Margin="572,378,0,0" VerticalAlignment="Top" Width="100" Click="Logud_Click"/>
         <Button Content="Åben Flow" HorizontalAlignment="Left" Margin="72,36,0,0" VerticalAlignment="Top" Width="100" Click="OpenFlow_Click"/>
         <Button Content="* Favorit" HorizontalAlignment="Left" Margin="653,74,0,0" VerticalAlignment="Top" Width="100" Click="Favorit_Click"/>

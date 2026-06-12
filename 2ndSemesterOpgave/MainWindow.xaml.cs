@@ -16,6 +16,13 @@ namespace _2ndSemesterOpgave
     /// </summary>
     public partial class MainWindow : Window
     {
+        // ╔══════════════════════════════════════════════════════╗
+        // ║  FORFATTER   : Dennis                                ║
+        // ║  KLASSE      : MainWindow                            ║
+        // ║  METODE      : MainWindow()                          ║
+        // ║  BESKRIVELSE : starter programmet viser login side   ║
+        // ║                                                      ║
+        // ╚══════════════════════════════════════════════════════╝
         public MainWindow()
         {
             InitializeComponent();

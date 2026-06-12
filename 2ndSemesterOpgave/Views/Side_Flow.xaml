@@ -10,7 +10,7 @@
         <Label Content="Flow" HorizontalAlignment="Center" Margin="0,24,0,0" VerticalAlignment="Top"/>
         <Button Content="Tilbage til Flow Overview" HorizontalAlignment="Left" Margin="46,27,0,0" VerticalAlignment="Top" Width="150" Click="TilbageFlowOverview_Click"/>
         <TreeView x:Name="FlowTree" Margin="46,91,561,52"/>
-        <Button Content="+ Opret UnderFlow" HorizontalAlignment="Left" Margin="654,22,0,0" VerticalAlignment="Top" Width="120" Click="OpretUnderFlow_Click"/>
+        <Button x:Name="OpretUnderFlow" Content="+ Opret UnderFlow" HorizontalAlignment="Left" Margin="654,22,0,0" VerticalAlignment="Top" Width="120" Click="OpretUnderFlow_Click"/>
         <TextBlock x:Name="FlowTitel_TextBlock" HorizontalAlignment="Center" Margin="0,51,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="258"/>
         <ScrollViewer Margin="271,102,0,0" Height="231" Width="503" HorizontalAlignment="Left" VerticalAlignment="Top">
             <TextBlock x:Name="FlowText_TextBlock" TextWrapping="Wrap" Text="TextBlock"/>
